@@ -1,0 +1,102 @@
+
+git init
+
+git config
+git config --list
+git config --list --show-origin
+git config --global user.email "tuEmail"
+git config --global user.name "yourName"
+git config --global --unset-all user.name "newName"
+git config --global --unset-all user.name
+git config --global --add user.name "newName"
+
+git rm --cached fileName //saca los archivos de staged
+git rm fileName  // verdocumento 13
+git rm --cached  // ver documento 13
+git rm --force //elimina de git y del disco duro
+git reset HEAD // Saca los archivos de staged para su estado anterior
+
+git add "folderName o fileName"
+git add .
+git commit -m "message"
+git commit -am "message"
+git checkout IDdelCommit
+
+Esc Shift zz
+
+git status
+git show
+
+git log
+git log --stat
+git log fileName
+git log --oneline
+git log decorate // muestra donde esta el head point en el log
+git log -p // lineas que cambiaron y muestra el cambiaron
+git shortlog // cambios por usuario
+git log --graph --oneline --decorate
+git log --pretty=format:#%cn hizo un commit %h el dia %cd" //muestra mensajes personalizados de los commits
+git log -3 // limita el numero de commits
+git log --after="2018-1-2"
+git log --after="today"
+git log --after="2018-1-2" --before="today"
+git log --author="authorName"
+git log --grep="INVIE" // busca los commits que cumplan tal cual esta escrito entre las comillas
+git log --grep="INVIE" -i // no discrimina entre mayusculas o minusculas
+git log - "fileName"
+git log -S "contenido" // busca por contenido
+git log > log.txt // guardar los logs en un archivo txt
+git log --all
+git log --all --graph
+git log --all --graph --decorate --oneline
+
+git diff commitA commitB
+git checkout IDdelCommit
+git checkout IDdelCommit fileName
+git reset --solf IDdelCommit // vuelve hasta el commit y deja los otros en staged
+git reset --mixed IDdelCommit // vuelve hasta el commit y deja los otros hasta el working area
+git reset --hard IDdelCommit // vuelve hasta el commit sin dejar rastro
+
+git branch nameOfBranch
+git checkout nameOfBranch
+git checkout -b nameOfBranch // combinacion de las dos anteriores
+git checkout rama-o-id-commit // nos lleva a cualquier commit sin borrar los posteriores
+git merge branchName -m "message" //desde la rama que quiero como principal fusiona con la otra
+git show-branch
+git show-branch --all
+git push origin nameOfBranch
+gitk
+
+
+git branch -d // borra ramas
+git merge --abort // revierte un merge
+
+//Pasos especificos para llevar y traer a GitHub//
+
+git clone urlDelServidorRemot // trae de GitHub un repositorio con archivos ya creados
+
+git remote add origin URL
+git remote
+git remote -v
+git pull origin main --allow-unrelated-histories
+git push origin main
+
+git branch -M main
+
+// LLaves - desde home - una por PC//
+
+ssh-keygen -t rsa -b 4096 -C "yourEmail"
+eval "$(ssh-agent -s)"
+ssh-copy-id "yourEmail"
+cd ~/.ssh
+//copiar el contenido de la llave publica//
+//llevar la llave public a GitHub - Setting del perfil - SSH and GPG keys - New SSH key//
+ssh-add~/.id_rsa
+
+git remote set-url origin urlDelSSH
+
+git tag -a nombreTag -m "message" IDdelCommit
+git tag
+git show-ref --tags
+git tag -d nombreTag
+git push origin :refs/tags/nombreTag
