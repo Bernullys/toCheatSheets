@@ -100,5 +100,6 @@ git remote set-url origin urlDelSSH
 git tag -a nombreTag -m "message" IDdelCommit
 git tag
 git show-ref --tags
+git push origin --tags
 git tag -d nombreTag
 git push origin :refs/tags/nombreTag
