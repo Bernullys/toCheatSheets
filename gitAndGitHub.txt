@@ -5,6 +5,7 @@ git init
 
 git config
 git config --list
+git config -l
 git config --list --show-origin
 git config --global user.email "tuEmail"
 git config --global user.name "yourName"
@@ -23,6 +24,13 @@ git add .
 git commit -m "message"
 git commit -am "message"
 git checkout IDdelCommit
+
+//Si el mensaje del commit es erroneo//
+git commit -amend
+//corregir el mensaje//
+git pull origin main
+git push --set-upstream origin main
+//listo//
 
 Esc Shift zz
 
