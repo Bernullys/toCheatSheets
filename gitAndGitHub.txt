@@ -95,7 +95,7 @@ cd ~/.ssh
 //llevar la llave public a GitHub - Setting del perfil - SSH and GPG keys - New SSH key//
 ssh-add~/.id_rsa
 
-git remote set-url origin urlDelSSH
+git remote set-url origin urlDelSSH // asi se le asigna la llave a un repositorio que no la tenga
 
 git tag -a nombreTag -m "message" IDdelCommit // crea una etiqueta de un punto que queramos
 git tag  // indica las etiquetas que tengamos
