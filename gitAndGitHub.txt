@@ -67,15 +67,15 @@ git reset --solf IDdelCommit // vuelve hasta el commit y deja los otros en stage
 git reset --mixed IDdelCommit // vuelve hasta el commit y deja los otros hasta el working area
 git reset --hard IDdelCommit // vuelve hasta el commit sin dejar rastro
 
-git branch nameOfBranch
-git checkout nameOfBranch
+git branch nameOfBranch // crea una branch
+git checkout nameOfBranch // cambia de branch
 git checkout -b nameOfBranch // combinacion de las dos anteriores
 git checkout rama-o-id-commit // nos lleva a cualquier commit sin borrar los posteriores
 git merge branchName -m "message" //desde la rama que quiero como principal fusiona con la otra
-git show-branch
-git show-branch --all
-git push origin nameOfBranch
-gitk
+git show-branch // muestra los commits de la branch que queramos
+git show-branch --all // muestra todos los commits de todas las branch
+git push origin nameOfBranch // envia rama a github
+gitk // interface de un arbol de ramas fuera de la terminal
 
 
 git branch -d // borra ramas
@@ -86,14 +86,14 @@ git merge --abort // revierte un merge
 git clone urlDelServidorRemot // trae de GitHub un repositorio con archivos ya creados
 
 git remote add origin URL
-git remote
-git remote -v
-git pull origin main --allow-unrelated-histories
-git push origin main
+git remote // indica cual es el nombre del repositorio remoto
+git remote -v // indica el nombre del repositorio remoto con el autor
+git pull origin main --allow-unrelated-histories // trae el repositorio con archivos que no tengamos en local
+git push origin main // envia cambios al repositorio remoto a la rama main
 
-git branch -M main
+git branch -M main // cambia el nombre de master a main 
 
-// LLaves - desde home - una por PC//
+// LLaves - desde home - una por PC// Es una llave por PC
 
 ssh-keygen -t rsa -b 4096 -C "yourEmail"
 eval "$(ssh-agent -s)"
@@ -103,11 +103,106 @@ cd ~/.ssh
 //llevar la llave public a GitHub - Setting del perfil - SSH and GPG keys - New SSH key//
 ssh-add~/.id_rsa
 
-git remote set-url origin urlDelSSH
+git remote set-url origin urlDelSSH // asi se le asigna la llave a un repositorio que no la tenga
+
+git tag -a nombreTag -m "message" IDdelCommit // crea una etiqueta de un punto que queramos
+git tag  // indica las etiquetas que tengamos
+git show-ref --tags  // indica las etiquetas con caracteristicas
+git tag -d nombreTag // borra una etiqueta del repositorio local
+git push origin :refs/tags/nombreTag // borra las etiquetas del remoto
+
+git config alias.alia "comando completo"    //crear alias solo para git en un proyecto
+git config --global alias.alia "comando completo"   //para git en todos los proyectos
+
+//si como colaborador se agrego algo malo en un commit//
+git --amend   //remendar el commit como por ejemplo arreglar el mensaje//ojo primero hay que agregar los cambios aon git add//
+git pull origin main
+git push --set upstream origin main // para ejecutar el cambio
+
+//flujo de trabajo profesional//
+En un entorno profesional se bloquea la rama main
+1- Crear ramas
+2- Asignar una rama a cada programador
+3- El programador baja el repositorio con git pull origin main
+4- El programador cambia de rama
+5- El programador trabaja en su rama
+6- El programador sube con git push origin nombre_rama
+7- El encargado de organizar el proyecto baja, revisa y unifica todos los cambios
+
+//Hacer fork remoto desde consola en GitHub//
+git remote add nombre_del_remoto url_del_remoto // se crea un remoto adicional
+ejemplo: git remote add upstream https:xxxxxx
+git pull remoto rama
+ejemplo: git pull upstream main
+// El flujo de trabajo cambia, en adelante se estara haciendo pull desde el upstream y push al origin para pasar a hacer pull request//
+git pull upstream main
+git push origin main
+
+//Crear un archivo .gitignore//
+//En la carpeta root del proyecto se crea un archivo .gitignore//
+//Dentro del archivo se llaman todos los archivos que se quieren ignorar para el controlador de versiones//
+//ver proyectos de empresas para ver lo que ignoran es una buena practica//
+//irgur.com puede almacenar imagenes para los proyectos//
+
+//Editor de los archivos README.md (markdown) https://pandao.github.io/editor.md/en.html//
+
+//Subir un repositorio a GitHub Pages//
+//En GitHub Pages dicen todos los pasos que se deben seguir//
+
+//Reorganizar los commits de las ramas (mala practica)//
+//Para hacer un rabase en la rama feature de la rama main//
+git checkout feature
+git rebase main
+git checkout main
+git rebase feature
+
+//guardar cambios en memoria y recuperarlos despues//
+//sirve para poder cambiarnos de rama y no perder el avance en esa rama mientrastanto//
+git stash   //agrega los cambios a memoria y te devuelve a como estaba antes de guardar//
+git stash save "mensaje"    //deja mensaje para identificar//
+git stash pop   //recupera el stash en donde sea que estes//
+git stash pop stash@{numero_de_stash}   //aplica los cambios y elimina del stash//
+git stash apply stash@{numero_de_stash}   //retoma los cambios de una posicion especifica//
+git stash list    //lista los elementos en stash//
+git stash brach nombre_rama     //crea un stash en una rama//
+git stash branch nombre_rama stash@{numero_de_stash}    //crea rama y aplica stash especifico//
+git stash drop      //elimina el elemento del stash mas reciente//
+git stash drop stash@{numero_de_stash}    //elimina el stash especifico//
+git stash clear     //elimina todos los stash
+
+git stash -u        //guardara en el stash los archivos que no esten en el staging//
+
+//limpiar tu proyecto//
+git clean         //elimina archivos sin seguimiento//
+git clean --dry-run       //revisa archvos que no tienen seguimiento//
+git clean -f              //elimina los archivos del listado sin seguimiento//
+
+//tarer commits desde cualquier otra rama//mala practica//
+git cherry-pick ID_commit     //colocara el commit en el head de la rama//
+
+//en caso de emergencia//
+git reflog          //muestra todos los id de los commits asi se hayan borrado//
+
+//Herramienta para buscar//
+git grep palabra    //buscara todos los archivos donde aparezca palabra//
+git grep -S palabra
+git log -S palabra  //busca entre los commits//
+
+//Comandos y recursos colaborativos//
+git shortlog -sn    //muestra cuantos commits ha hecho cada miembro del equipo//
+git shortlog -sn --all    //lo mismo del anterior mas los que han sido eliminados//
+git shortlog -sn --all --no-merge   //muestra cuantos commits ha hecho cada miembro, quitando los eliminados sin los merges//
+git blame ARCHIVO   //muestra quien hizo cada cosa por linea//
+git COMANDO --help    //muestra como funciona el comando//
+git blame ARCHIVO -Llinea_inicial,linea_final   //muestra quien hizo cada cosa linea por linea en un rango de lineas//
+git branch -r       //muestra todas las ramas remotas//
+git branch -a       //muestra todas las ramas locales y remotas//
+
 
 git tag -a nombreTag -m "message" IDdelCommit
 git tag
 git show-ref --tags
 git push origin --tags
 git tag -d nombreTag
-git push origin :refs/tags/nombreTag
+
+
