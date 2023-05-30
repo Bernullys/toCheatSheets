@@ -1,0 +1,92 @@
+# Curso-NPM
+Curso NPM Gestión de Paquetes y Dependencias en JavaScript
+
+npm (node package managment)
+
+npm es un gestor de paquetes y dependencias para Node.js
+npm es compatible con cualquier plataforma y es fácil de usar.
+npm permite organizar, administrar y brindar herramientas para el manejo de paquetes
+
+Un modulo es un archivo JS / Un paquete es un conjunto de modulos / Una dependencia es un paquete que tu proyecto necesita.
+
+En el documento 04 estan los pasos para instalar nvm (node version manangement).
+
+Cada vez que se inicialice un proyecto se utiliza: npm init y se estructura el archivo package.json
+
+Se pueden instalar dependencias locales, para desarrollo y globales:
+    $ npm install --save <paquete> $ npm install -S <paquete>
+    $ npm install --save-dev <paquete> $ npm install -D <paquete>
+    $ npm install -global <paquete> $ npm install -g <paquete>  // con las globales, si necesita permiso se hacen con sudo.
+
+Visualizar los paquetesinstalados:
+    $ npm list
+    $ npm list -g $ npm list -g --depth 0
+    $ npm list --depth 2
+
+Instalar versiones especificas de un paquete:
+    $ npm install <paquete>@<versión>
+    $ npm install <paquete>@latest
+
+Instalar dependencias opcionales:
+    $ npm install --save-optional <paquete> 
+    $ npm install -O <paquete>
+
+Simular la instalacion de una dependencia:
+    $ npm install --dry-run <paquete>
+
+Cuando se trae un proyecto y se quieren instalar sus dependencias se hace:
+    npm install
+    npm i
+    Esto creara un archivo package-lock.json y un directorio llamado node_modules
+
+Comandos en NPM (scripts):
+    se crea en el json: json { "scripts": { "<nombre>": "<comando>" } }
+    se corre en la terminal: npm run <nombre>
+
+Ejecutando paquetes de manera directa:
+    $ npx create-react-app <nombre> 
+    $ npx create-next-app <nombre>
+
+Actualizacion de dependencias:
+    npm outdate         // mostrara los paquetes que estan desactualizados.
+    npm outdate --dd    // con mas detalles.
+    npm update          // actualiza las dependencias.
+    npm update <paquete> // actualiza solo un paquete.
+    npm install <paquete>@latest    //actualiza al mas reciente.
+
+Auditar tus dependencias:
+    npm audit
+    npm audit --json
+    npm audit fix
+    npm audit fix --force
+    Si el problema persiiste, es necesario actualizar el paquete a su ultima version.
+    En el archivo de la clase 10 describen la solucion de algunos problemas que pueden ocurrir.
+
+Eliminar dependencias y Package lock:
+    npm uninstall <paquete>
+    Una vez eliminado un paquete, es necesario actualizar el directorio node_modules
+    Se debera eliminar el directorio node_modules y tambien se puede eliminar el package-lock.json y luego se ejecuta npm install
+    Opcional: json // package.json { "scripts": { "phoenix": "rm -f package-lock.json && rm -rf
+./node_modules && npm i --no-fund --no-audit" } }
+    En la clase 11 se explica como se pueden ver los pasos ejecutados por un comando npm.
+
+Crear un paquete:
+    Comprobar que el nombre no exista antes.
+    Crear un repositorio en github. Clonarlo, iniciarlo con npm.
+    En clase 12 hay un ejemplo de como crear el paquete.
+
+Publicar un paquete:
+    Asegurar de que el paquete funcione correctamente.
+    sudo npm link       // crea un link simbolico sin publicarlo aun.
+    pwd                 // identificar la direccion del directorio en que se encuentra y copiarla.
+    npm install -g <ruta>   // de esta manera ya se puede ejecutar el paquete con el nombre que le pusimos.
+
+    npm adduser             // para iniciar sesión NPM desde la terminal.
+    Ojo: en este paso tuve que cambiar la version del node utilizando nvm install 16.20.0 y despues nvm alias default 16.20.0 y despues cerrar y abrir de nuevo la terminal.
+    npm publish             // se publicara si no tiene errores.
+    npm whoami              // para verificar el usuario que esta haciendo la publicación.
+
+Versionando de paquetes y paquetes privados:
+    major.minor.patch
+    Cuando se actualiza: se debe agregar los cambios al repositorio y hacer commit, despues ejecutar npm version x.x.x despues npm publish
+    En el archivo de la clase 14 aparecen unas descripciones para el versionado y estructura del README.md
