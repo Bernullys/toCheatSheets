@@ -1,0 +1,7 @@
+.workers_main_container {
+    width: 500px;
+    font-size: small;
+    background: cyan;
+    margin: 24px 0 24px 0; 
+    box-shadow: 5px 5px 5px hsla(10, 0%, 60%, 1);
+}
