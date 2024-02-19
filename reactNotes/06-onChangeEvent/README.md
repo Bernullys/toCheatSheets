@@ -1,0 +1,1 @@
+onChange = event handler used primarily with form elements. Example: input, textarea, select, radios. Triggers a function every time the value of the user changes.
