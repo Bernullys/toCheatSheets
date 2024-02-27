@@ -12,8 +12,8 @@ function ToDoList () {
     function addTask () {
         if (newTask.trim() !== "") {
             setTasks(t => [...t, newTask])
+            setNewTask("")
         }
-        setNewTask("")
     }
 
     function deleteTask (index) {
@@ -23,15 +23,15 @@ function ToDoList () {
 
     function moveTaskUp (index) {
         if (index > 0) {
-            const updatedTasks = [...tasks]
+            const updatedTasks = [...tasks]; //this ; is neccesary here
             [updatedTasks[index], updatedTasks[index -1]] = [updatedTasks[index -1], updatedTasks[index]]
             setTasks(updatedTasks)
         }
     }
 
     function moveTaskDown (index) {
-        if (index > tasks.length -1) {
-            const updatedTasks = [...tasks]
+        if (index < tasks.length -1) {
+            const updatedTasks = [...tasks]; //this ; is neccesary here
             [updatedTasks[index], updatedTasks[index  + 1]] = [updatedTasks[index + 1], updatedTasks[index]]
             setTasks(updatedTasks)
         }
