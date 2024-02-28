@@ -1,6 +1,7 @@
 import NoDependencies from './NoDependencies'
 import RunOnMount from './RunOnMount'
 import RunOnMountAndDependencies from './RunOnMountAndDependencies'
+import AdvExample from './AdvExample'
 import './App.css'
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
 
   return (
     <>
-      <RunOnMountAndDependencies />
+      <AdvExample />
     </>
   )
 }

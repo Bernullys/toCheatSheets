@@ -4,7 +4,7 @@ function RunOnMount () {
     
     const [ count, setCount] = useState(0)
     
-    // This time is executing the function right away when run the code.
+    // This time is executing the function right away when run the code. But just once right away when the element mounts.
 
     useEffect(() => {
         document.title = `side effect from a function ${count}`

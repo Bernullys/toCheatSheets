@@ -15,6 +15,8 @@ function RunOnMountAndDependencies () {
         document.title = `side effects ${count} ${color}`
     }, [count, color])
 
+    // so any time the code changes, the variables inside the array of useEffect will change.
+
     function addCount () {
         setCount(c => c + 1) 
     }
