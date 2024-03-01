@@ -1,0 +1,1 @@
+Prop driling: passing props down into nested components.
