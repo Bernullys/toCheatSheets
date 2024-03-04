@@ -1,4 +1,4 @@
-import ComponentA from './Components/ComponentA'
+import ComponentAA from './useContexExample/ComponentAA'
 import './App.css'
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-      <ComponentA />
+      <ComponentAA />
     </>
   )
 }
