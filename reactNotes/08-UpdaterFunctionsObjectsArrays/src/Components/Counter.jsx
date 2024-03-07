@@ -5,7 +5,7 @@ function Counter () {
     const [count, setCount] = useState(0)
 
     function counterUp () {
-        setCount(c => c + 1) //By convention, it's common to name the pending state argument for the first letter of the state variable name like a for age. However, you may alsi call it like prevAge or something else that you find clearer.
+        setCount(c => c + 1) //By convention, it's common to name the pending state argument for the first letter of the state variable name like a for age. However, you may also call it like prevAge or something else that you find clearer.
 
         //Takes the PENDING state to calculate NEXT state.
         //React puts your updater function in a queue (waiting in line).

@@ -8,8 +8,7 @@ function Login (props) {
     return (
         <section className="login_main_container">
             {
-                props.logied ? loged :
-                outSide
+                props.logied ? loged : outSide
             }
         </section>
     )
