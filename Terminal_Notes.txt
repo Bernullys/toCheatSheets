@@ -12,3 +12,5 @@ Change Python versions:
     curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
     python3 --version  # Verify this points to the new version
     python3 get-pip.py
+  Check pip is correctly instaled:
+    python3 -m pip --version
