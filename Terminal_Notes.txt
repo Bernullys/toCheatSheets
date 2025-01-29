@@ -1,0 +1,14 @@
+Change Python versions:
+  Locate the path of the python versions:
+    ls /usr/bin/python3*
+  Add the New Version to update-alternative:
+    sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.x 1 # x is the version you want.
+  Select the Default Python Version:
+    sudo update-alternatives --config python3
+  Verify the Change:
+    python3 --version
+  Update pip for the New Version:
+    sudo apt install python3.x-distutils python3.x-venv
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+    python3 --version  # Verify this points to the new version
+    python3 get-pip.py
