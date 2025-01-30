@@ -205,4 +205,6 @@ git show-ref --tags
 git push origin --tags
 git tag -d nombreTag
 
+//Copiar un proyecto para empezar uno nuevo pero eliminado su historial de git//Despues se inicializa de nuevo git//
+rm -rf .git
 
