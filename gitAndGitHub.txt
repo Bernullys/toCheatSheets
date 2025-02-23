@@ -25,7 +25,7 @@ git commit -m "message"
 git commit -am "message"
 git checkout IDdelCommit
 
-//Si el mensaje del commit es erroneo//
+//Si el mensaje del commit es erroneo//O si se me olvido un pequeño ajuste en el codigo y no quiero agregar otro commit//
 git commit -amend
 //corregir el mensaje//
 git pull origin main
