@@ -66,6 +66,7 @@ git checkout IDdelCommit fileName
 git reset --solf IDdelCommit // vuelve hasta el commit y deja los otros en staged
 git reset --mixed IDdelCommit // vuelve hasta el commit y deja los otros hasta el working area
 git reset --hard IDdelCommit // vuelve hasta el commit sin dejar rastro
+git checkout main   // return to Head after ckecking a commit
 
 git branch nameOfBranch // crea una branch
 git checkout nameOfBranch // cambia de branch
